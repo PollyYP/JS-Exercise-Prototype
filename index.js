@@ -19,7 +19,6 @@ Airplane.prototype.land = function () {
   this.isFlying = false;
 };
 
-
 /*
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -39,9 +38,20 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
+Person.prototype.eat = function (someFood) {
+  while (this.stomach.length < 10) return this.stomach.push(someFood);
+};
+Person.prototype.poop = function () {
+  return this.stomach.splice(0, this.stomach.length);
+};
+Person.prototype.toString = function () {
+  return `${this.name}, ${this.age}`;
+};
 
 /*
   TASK 2
@@ -57,9 +67,16 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
+Car.prototype.fill = function (gallons) {
+  this.tank = this.tank + gallons;
+  return this.tank + gallons;
+};
 
 /*
   TASK 3
@@ -68,28 +85,38 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
-
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
 }
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function () {
+  return `Playing with his ${this.favoriteToy}`;
+};
 
-/* 
-  TASK 4
+// TASK 4
 
-  In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
-*/
-
+// In your own words explain the four principles for the "this" keyword below:
+// 1. When using "this" keyword without object before the dot or without declaring new keyword, "this " keyword will be the window/console Object in the global scope.
+// 2. When the function or object was invoked, Look to the left of the dot, if there is that what the 'this' keyword is referecing.
+// 3. When the function is invoked wtih the new keyword, "this" keyword inside that function is bound to the new object being constructed.
+// 4. Telling a function what the context of "this" keyword is going to be using .call, .apply or .blind.
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
-if (typeof exports !== 'undefined') {
-  module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Baby) { module.exports.Baby = Baby }
+if (typeof exports !== "undefined") {
+  module.exports = module.exports || {};
+  if (Airplane) {
+    module.exports.Airplane = Airplane;
+  }
+  if (Person) {
+    module.exports.Person = Person;
+  }
+  if (Car) {
+    module.exports.Car = Car;
+  }
+  if (Baby) {
+    module.exports.Baby = Baby;
+  }
 }
