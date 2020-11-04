@@ -18,7 +18,6 @@ Airplane.prototype.takeOff = function () {
 Airplane.prototype.land = function () {
   this.isFlying = false;
 };
-
 /*
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -67,7 +66,7 @@ Person.prototype.toString = function () {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car(model, milesPerGallon, tank, odometer) {
+function Car(model, milesPerGallon) {
   this.model = model;
   this.milesPerGallon = milesPerGallon;
   this.tank = 0;
@@ -97,11 +96,10 @@ Baby.prototype.play = function () {
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
-*/
+  1. When using "this" keyword without object before the dot or without declaring new keyword, "this " keyword will be the window/console Object in the global scope.
+  2. When the function or object was invoked, Look to the left of the dot, if there is that what the 'this' keyword is referecing. 
+  3. When the function is invoked wtih the new keyword, "this" keyword inside that function is bound to the new object being constructed.
+  4. Telling a function what the context of "this" keyword is going to be using .call, .apply or .blind.
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
